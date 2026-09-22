@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="200 households. One year. Starting October 1, 2026. It is not a knowledge problem, it is a practice problem.">
+<meta property="og:title" content="the housewholed experiment">
+<meta property="og:description" content="200 households. One year. Starting October 1, 2026. Hard things are easier in community.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://housewholed.org/">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
+<title>The Housewholed Experiment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  padding: 0 20px 96px;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 42rem; margin: 0 auto; }
+section { padding-block: 40px; border-top: 1px solid var(--rule); }
+section:first-of-type { border-top: 0; }
+
+h1, h2, h3 { font-family: var(--display); font-weight: var(--display-weight); text-wrap: balance; line-height: 1.14; margin: 0; }
+h1 { font-size: clamp(2.05rem, 6.8vw, 3rem); letter-spacing: var(--h1-tracking); }
+h2 { font-size: clamp(1.4rem, 4.4vw, 1.8rem); letter-spacing: -0.012em; margin-bottom: 18px; }
+h3 { font-size: 1.05rem; font-weight: 500; margin-bottom: 6px; }
+p { margin: 0 0 16px; }
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; }
+
+.eyebrow {
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-faint); margin: 0 0 14px;
+}
+.small { font-size: .92rem; color: var(--ink-soft); }
+
+/* the mark */
+.mark {
+  width: 74px; height: 74px; border-radius: 50%;
+  display: grid; place-items: center; margin-bottom: 26px;
+  border: 2px solid var(--accent);
+}
+.mark span { font-family: var(--display); font-size: 1.45rem; color: var(--accent); line-height: 1; }
+
+/* hero */
+.hero { padding-block: 44px 40px; }
+.hero .facts {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(1.05rem, 3.4vw, 1.25rem);
+  margin: 20px 0 14px; line-height: 1.35; color: var(--ink);
+}
+.hero .thesis { font-size: 1.15rem; color: var(--ink-soft); max-width: 34rem; }
+
+/* the line */
+.line-card {
+  background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 22px 24px; margin: 28px 0 0;
+  display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: baseline;
+}
+.line-card .num {
+  font-family: var(--mono); font-size: clamp(1.1rem, 4.4vw, 1.45rem);
+  font-weight: 500; color: var(--accent); white-space: nowrap;
+}
+.line-card .what { font-size: .96rem; color: var(--ink-soft); flex: 1 1 15rem; }
+.line-card a { color: inherit; }
+
+a { color: var(--link); text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 2px; }
+
+/* week rhythm */
+.beat {
+  display: grid; grid-template-columns: 10.5rem 1fr; gap: 4px 22px;
+  padding-block: 16px; border-bottom: 1px solid var(--rule);
+}
+.beat:last-child { border-bottom: 0; }
+.beat .when {
+  font-family: var(--mono); font-size: .76rem; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--accent); padding-top: .32em;
+}
+.beat p { margin: 0; font-size: .98rem; color: var(--ink-soft); }
+.beat .what-title { font-family: var(--display); font-weight: 500; font-size: 1.02rem; color: var(--ink); margin-bottom: 3px; }
+@media (max-width: 560px) { .beat { grid-template-columns: 1fr; } .beat .when { padding-top: 0; } }
+
+/* lists */
+ul.plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+ul.plain li { padding-left: 1.15rem; position: relative; color: var(--ink-soft); }
+ul.plain li::before {
+  content: ""; position: absolute; left: 0; top: .72em;
+  width: .42rem; height: .42rem; background: var(--accent); border-radius: 50%;
+}
+ul.plain li strong { color: var(--ink); }
+
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+@media (max-width: 620px) { .split { grid-template-columns: 1fr; gap: 28px; } }
+.split h2 { margin-bottom: 14px; }
+.split p { font-size: .98rem; color: var(--ink-soft); }
+
+/* sessions */
+.dates { display: flex; flex-wrap: wrap; gap: 14px; margin: 22px 0 18px; }
+.date {
+  background: var(--accent-soft); border-radius: var(--radius);
+  padding: 14px 18px; display: grid; gap: 2px; flex: 1 1 13rem;
+}
+.date .d { font-family: var(--display); font-weight: 500; font-size: 1rem; color: var(--ink); }
+.date .t { font-family: var(--mono); font-size: .8rem; color: var(--accent-ink); letter-spacing: .04em; }
+
+/* money */
+.price { font-family: var(--display); font-weight: var(--display-weight); font-size: clamp(1.65rem, 5.6vw, 2.2rem); letter-spacing: -.02em; margin-bottom: 4px; }
+.price-note { font-family: var(--mono); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 22px; }
+.terms { display: grid; gap: 18px; margin-top: 8px; }
+.term { border-left: 3px solid var(--rule); padding-left: 16px; }
+.term.floor { border-left-color: var(--signal); }
+.term p { font-size: .96rem; color: var(--ink-soft); margin: 0; }
+
+/* steps */
+ol.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; gap: 20px; }
+ol.steps li { counter-increment: s; display: grid; grid-template-columns: 1.9rem 1fr; gap: 14px; }
+ol.steps li::before {
+  content: counter(s); font-family: var(--mono); font-size: .82rem;
+  color: var(--accent); border: 1px solid var(--accent); border-radius: 50%;
+  width: 1.9rem; height: 1.9rem; display: grid; place-items: center; background: var(--panel);
+}
+ol.steps p { margin: 0; font-size: .98rem; color: var(--ink-soft); }
+ol.steps strong { color: var(--ink); }
+
+/* faq */
+details { border-bottom: 1px solid var(--rule); }
+details summary {
+  cursor: pointer; list-style: none; padding: 15px 0;
+  font-family: var(--display); font-weight: 500; font-size: 1rem;
+  display: flex; justify-content: space-between; gap: 16px; align-items: baseline;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::after { content: "+"; font-family: var(--mono); color: var(--accent); }
+details[open] summary::after { content: "\2212"; }
+details p { padding-bottom: 16px; margin: 0; color: var(--ink-soft); font-size: .98rem; }
+
+.rules p { color: var(--ink-soft); }
+blockquote { margin: 0; padding: 0 0 0 18px; border-left: 3px solid var(--accent); font-size: 1.08rem; }
+.close p { font-size: 1.06rem; }
+.signoff { font-family: var(--mono); font-size: .82rem; color: var(--ink-faint); letter-spacing: .04em; margin-top: 28px; }
+.signoff a { color: var(--ink-soft); }
+.crisis { font-size: .9rem; color: var(--ink-faint); }
+
+@media (prefers-reduced-motion: no-preference) {
+  details[open] p { animation: fade .18s ease-out; }
+  @keyframes fade { from { opacity: 0; transform: translateY(-2px); } }
+}
+
+
+/* Banner: the LinkedIn banner brought to the page. White ground, blue text,
+   blue-violet-pink gradient on the display type, the circle "the" mark. */
+:root {
+  --ground: #FFFFFF;
+  --panel: #FBFAFF;
+  --ink: #2B4FD0;
+  --ink-soft: #4C68D6;
+  --ink-faint: #8E9BD4;
+  --rule: #E3E6F7;
+  --accent: #8B5CF6;
+  --accent-ink: #6D3FD6;
+  --accent-soft: #F3EEFE;
+  --signal: #EC5FA8;
+  --link: #6D3FD6;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(43,79,208,.06), 0 10px 30px rgba(43,79,208,.08);
+
+  --display: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --display-weight: 600;
+  --h1-tracking: -0.025em;
+  --body: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --grad: linear-gradient(96deg, #2B5CE0 0%, #7B5BF2 46%, #EC5FA8 100%);
+}
+
+body { font-size: 1.02rem; line-height: 1.66; }
+
+/* gradient display type, the banner's signature */
+h1, h2, .price, .hero .facts {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+h1 { font-weight: 700; }
+.hero .facts { font-weight: 600; }
+.hero .thesis { color: var(--ink-soft); }
+
+/* the mark: gradient ring, drawn as a gradient disc with a white inner disc */
+.mark { border: 0; background: var(--grad); padding: 2px; }
+.mark span {
+  width: 100%; height: 100%; border-radius: 50%; background: var(--ground);
+  display: grid; place-items: center; font-weight: 500; font-size: 1.4rem;
+  color: #7B5BF2;
+}
+
+.line-card { border-color: #DCD3FB; }
+.line-card .num { color: var(--accent-ink); }
+.beat .when { color: var(--accent); }
+.date { background: var(--accent-soft); }
+.date .d { color: var(--ink); }
+ul.plain li::before { background: var(--signal); }
+blockquote { border-left-color: var(--signal); font-weight: 500; }
+.term.floor { border-left-color: var(--signal); }
+ol.steps li::before { border-color: #DCD3FB; color: var(--accent-ink); }
+details summary { color: var(--ink); }
+details summary::after { color: var(--signal); }
+.eyebrow { color: var(--accent); }
+
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <section class="hero">
+    <div class="mark" aria-hidden="true"><span>the</span></div>
+    <p class="eyebrow">An experiment in households</p>
+    <h1>the housewholed experiment</h1>
+    <p class="facts">200 households. One year. Starting October&nbsp;1, 2026.</p>
+    <p class="thesis">It's not a knowledge problem. It's a practice problem. Hard things are easier in community.</p>
+    <div class="line-card">
+      <span class="num"><a href="tel:+12155982888">+1 (215) 598-2888</a></span>
+      <span class="what">Call the line and say what you want for your household a year from now. That message is your application. Nobody pays anything before I've listened.</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>What part of your life makes you think... this doesn't make any sense, that this is the way it is?</h2>
+    <p>For me it's two things. Taking care of my body. Earning a consistent share of our household income.</p>
+    <p>Five and a half years into our daughter's life, and neither has happened consistently. It took four years, three fertility clinics and three pregnancy losses to add her to our family. You'd think I'd be doing everything I could to be here for all of it.</p>
+    <p>My hypothesis? I have been scared. More scared of putting the thing out in the world, of getting it wrong, than willing to do the uncomfortable thing.</p>
+    <p>Maybe for you it's something else. The ways of being you inherited from your family of origin. Your parents. A teacher. A boss. Patterns and conditions you did not create, but that are influencing your household.</p>
+    <p>I didn't choose them.</p>
+    <blockquote><p>But even if I do not choose these feelings, I can absolutely choose how I relate to them.</p></blockquote>
+  </section>
+
+  <section>
+    <p class="eyebrow">The one idea</p>
+    <h2>It's not a knowledge problem</h2>
+    <p>We have every bit of knowledge that ever existed in the world at our fingertips.</p>
+    <p>It's not that we don't know what to do. It's that we need support and courage to do it.</p>
+    <p>We already have all the wisdom we could ask for. <strong>Our problem is practice.</strong></p>
+  </section>
+
+  <section>
+    <p class="eyebrow">The rhythm</p>
+    <h2>What a week actually looks like</h2>
+    <div class="rhythm">
+      <div class="beat">
+        <span class="when">Within an hour of waking</span>
+        <div>
+          <div class="what-title">Your intention, out loud</div>
+          <p>I share my intention for the day, and what might get in the way. And I can ask for support in that.</p>
+        </div>
+      </div>
+      <div class="beat">
+        <span class="when">At lunch</span>
+        <div>
+          <div class="what-title">A listening partnership</div>
+          <p>Fifteen minutes each, or thirty. One person shares, the other listens. Not to fix you, not to question you, not to advise you, and not to judge you. Just to see and hear you. Then you return the favor.</p>
+        </div>
+      </div>
+      <div class="beat">
+        <span class="when">Once a week</span>
+        <div>
+          <div class="what-title">The live hour</div>
+          <p>Not ask-me-anything. Share the thing you're working on. Here was my problem, here was my hypothesis, here is the experiment I tried, and here is what happened.</p>
+        </div>
+      </div>
+      <div class="beat">
+        <span class="when">Whenever it hits</span>
+        <div>
+          <div class="what-title">The line</div>
+          <p>Call and say the thing out loud. Maybe there's not somebody on the other line answering, but there will be somebody listening. I'll listen to all of them.</p>
+        </div>
+      </div>
+      <div class="beat">
+        <span class="when">For what's pressing</span>
+        <div>
+          <div class="what-title">Workgroups</div>
+          <p>Parenting toddlers. Sick and dying parents. Connecting more deeply with your partner. Healing patterns. We raise our hands and form teams of support around them.</p>
+        </div>
+      </div>
+      <div class="beat">
+        <span class="when">When it needs to move</span>
+        <div>
+          <div class="what-title">Room to move it</div>
+          <p>Writing, singing, dancing, drawing, acting, shouting. Whatever wants to move.</p>
+        </div>
+      </div>
+      <div class="beat">
+        <span class="when">All year</span>
+        <div>
+          <div class="what-title">A commons we build ourselves</div>
+          <p>Our own body of knowledge, our own household manual, and an inventory of experiments people actually ran, with what happened. Experience, not more information.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What you'll bring</h2>
+    <ul class="plain">
+      <li><strong>The money.</strong> $1,500 for the household, for the year.</li>
+      <li><strong>The time.</strong> At least an hour a week for fifty-two weeks. Hopefully more.</li>
+      <li><strong>Your wants and your challenges,</strong> up front and once a month.</li>
+      <li><strong>Saying the hard things out loud.</strong></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Where the hour and the money come from</h2>
+    <p>You already make daily investments of time and money that do not serve you, and do not encourage you to do the hard thing.</p>
+    <p>Take the time and the money from those things, and put them into this.</p>
+    <p>How would one hour taken from social media, or television, or something else that isn't serving you, benefit you if you spent it working toward something you really want, or really want to overcome?</p>
+    <p>Across a year, $1,500 is about four dollars a day.</p>
+  </section>
+
+  <section class="split">
+    <div>
+      <h2>Who this is for</h2>
+      <p>A household is whoever you share a home and a life with. One person, a couple, roommates, a family of any shape. All welcome.</p>
+      <p>Households that feel the way I do. Although we may have some of what we want, there are still things we are yearning for that feel just out of reach.</p>
+      <p>Households who can see the patterns and conditions they did not create, but that are influencing their home.</p>
+      <p>People willing to own their part. We can all be victims, and we can all own our part in our healing.</p>
+    </div>
+    <div>
+      <h2>Who this is not for</h2>
+      <p>If you want a curriculum, or somebody to hand you the five steps, this is not that, and I would rather you kept your money.</p>
+      <p class="crisis">If you are in crisis right now, you need more than a community. Please get real support first, and come find us after. In the US, call or text 988.</p>
+      <p>And if talking honestly about your household with other people makes you want to close this page... that is worth listening to. This asks something of you.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Why me</p>
+    <h2>I have been convening people my whole life</h2>
+    <p>Twenty years coaching leaders and teams. The last decade helping people relate differently to work, money, family and themselves. Clients from Google, Goldman Sachs and the White House, advising the Vatican and the European Parliament.</p>
+    <p>And I have been convening people my whole life. Pick-up games as a kid. A two-hundred-person happy hour in South Philly. A coworking crew, a kindergarten family meetup, porch coffee for my neighbors. This is the thing I do. I am finally pointing it at the thing that matters most.</p>
+    <p>For the record, the rest of it: I left corporate. I lost my father. My wife and I lost three pregnancies before our daughter arrived. A few weeks ago I worked out what our household actually costs to run and we are about eight hundred dollars a month short. Every month.</p>
+    <blockquote><p>I do not think that makes me unusual. I think that makes me a household.</p></blockquote>
+  </section>
+
+  <section>
+    <h2>What I can and cannot promise</h2>
+    <p>I cannot promise I will get it right. Trying to make sure I get it right is most of what got me into this mess in the first place.</p>
+    <p>Here is what I can promise. I will create spaces that are caring. There will be real agreements in place so people feel safe. There will be room to be vulnerable and not be tidy about it.</p>
+    <p>And this, from the version of me that has run this for years in smaller rooms: <strong>if you do 10 to 20 percent of this year-long journey, you will find meaningful progress in your household.</strong></p>
+  </section>
+
+  <section class="rules">
+    <p class="eyebrow">The rules of the room</p>
+    <h2>No ads. No trolls. No performance.</h2>
+    <p>Bragging and "this is what is hard right now" are welcome in the same conversation, on the same day, from the same person.</p>
+    <p><strong>No ranking</strong> how one household handled a thing versus another. The value is a new angle, not a scoreboard.</p>
+    <p><strong>No advice-giving.</strong> Share what happened to you. Let people take what is useful.</p>
+    <p>What's shared here stays here. And as little economic leakage as we can manage: what this community earns mostly stays in it.</p>
+  </section>
+
+  <section class="sessions">
+    <p class="eyebrow">Come and ask me anything</p>
+    <h2>Open house, twice this week</h2>
+    <p>Sixty minutes on Zoom. Fifteen on what this is and what it isn't, thirty for your questions, and fifteen for anyone who wants to say out loud what they want for their household. Curious counts. Skeptical counts. Questions about the money are welcome, and I'll answer them in the room.</p>
+    <div class="dates">
+      <div class="date"><span class="d">Thursday, September 24</span><span class="t">8:00pm ET</span></div>
+      <div class="date"><span class="d">Friday, September 25</span><span class="t">12:00pm ET</span></div>
+    </div>
+    <p class="small">Then weekly until October 15. To get the link, email <a href="mailto:matthew@housewholed.org">matthew@housewholed.org</a> or call the line and say you want in the room.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">How to join</p>
+    <h2>It starts with your voice, not a credit card</h2>
+    <ol class="steps">
+      <li><p><strong>Record your application.</strong> Call <a href="tel:+12155982888">+1 (215) 598-2888</a>, or send a short voice memo or video to <a href="mailto:matthew@housewholed.org">matthew@housewholed.org</a>. Tell me what's possible for your household a year from now, and the hard things you want to bring into this community. Say your full name and your email.</p></li>
+      <li><p><strong>I listen to every one</strong> and get back to you within two days.</p></li>
+      <li><p><strong>If it's a fit, I send you the link to invest.</strong> No money changes hands before that.</p></li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="eyebrow">What it costs</p>
+    <div class="price">$1,500 per household, for the year</div>
+    <div class="price-note">One payment, made only after your application is accepted</div>
+    <p>No subscription. It does not auto-renew. It starts October 1, 2026 and ends September 30, 2027. When the year ends, it ends, and if you want another one we will talk about it then.</p>
+    <p>I will tell you where the money goes, because that is how this is going to operate: a modest salary, taxes, the cost of running it, retiring household debt, and building the reserve that means my family stops making decisions out of fear.</p>
+    <div class="terms">
+      <div class="term floor">
+        <h3>The floor: 50 households by October 15</h3>
+        <p>Every household applies and hears back from me before investing, so the investment is final once it's made. One exception: this year needs at least 50 households. If fewer than 50 have joined by October 15, the experiment doesn't run, and everyone gets a full refund.</p>
+      </div>
+      <div class="term">
+        <h3>Community seats</h3>
+        <p>Up to 25 households can join by investing what they're able. If $1,500 isn't possible right now, say so in your application.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">The questions you're already asking</p>
+    <h2>Fair enough</h2>
+    <details><summary>I don't have an hour a week</summary><p>You do, and you already know where it is. That's the first experiment.</p></details>
+    <details><summary>My partner would never do this</summary><p>One person per household is the design. Bring what you learn home. If your partner joins later, good.</p></details>
+    <details><summary>This sounds a little woo-woo</summary><p>Some of it is feelings. Most of it is experiments, reports and people keeping each other company while they do hard things.</p></details>
+    <details><summary>What if I join and don't use it?</summary><p>That's what the application is for. If you can't picture yourself showing up, I'd rather you kept your money.</p></details>
+    <details><summary>What if not enough people sign up?</summary><p>This year needs at least 50 households. If fewer than 50 have joined by October 15, everyone gets a full refund, and I'll share what I learned.</p></details>
+    <details><summary>What do I actually get on day one?</summary><p>A welcome, one listening partnership in your first week, and the question we all start with: what do you want for your household a year from now?</p></details>
+  </section>
+
+  <section class="close">
+    <p class="eyebrow">A year from now</p>
+    <h2>Why don't you come along with us?</h2>
+    <p>I don't know where your household is going to be at the end of this experiment, just like I don't know where mine is going to be.</p>
+    <p>But I would bet money that if we do it together, and we are just as vulnerable with our wants as we are with our challenges... one year from now, we will be happier together. More peaceful together. And we will have a harmony we can share with the rest of our communities.</p>
+    <p>A year from now, I'll be celebrating what we've done together, the stability that came from my full attention on this, and my slimmer waistline.</p>
+    <p>So if you want some focus, some community, and a little more joy, peace, and prosperity in your house...</p>
+    <div class="line-card">
+      <span class="num"><a href="tel:+12155982888">+1 (215) 598-2888</a></span>
+      <span class="what">Say what you want for your household a year from now, and what's getting in the way. <strong>Or, if you think this is wrong, call and tell me why.</strong> Sixty seconds. The people who tell me what's broken are more useful to me right now than the people who say it sounds nice.</span>
+    </div>
+    <p class="signoff">
+      Let's be weird together.<br>
+      Matthew A. Grande · <a href="mailto:matthew@housewholed.org">matthew@housewholed.org</a> · housewholed.org
+    </p>
+  </section>
+
+</div>
+
+</body>
+</html>
