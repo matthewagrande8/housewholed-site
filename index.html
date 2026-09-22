@@ -3,80 +3,504 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>the housewholed experiment</title>
-<meta name="description" content="200 households. One year. Starting October 1, 2026. The page is being written. The line is already open.">
+<meta name="description" content="200 households. One year. Starting October 1, 2026. It is not a knowledge problem, it is a practice problem.">
 <meta property="og:title" content="the housewholed experiment">
-<meta property="og:description" content="200 households. One year. Starting October 1, 2026. The line is open: +1 (215) 598-2888.">
+<meta property="og:description" content="200 households. One year. Starting October 1, 2026. Hard things are easier in community.">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://housewholed.org/">
-<meta name="robots" content="noindex">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
+<title>The Housewholed Experiment</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
 <style>
-  *,*::before,*::after { box-sizing: border-box; }
-  :root {
-    --ground:#FFFFFF; --ink:#2B4FD0; --ink-soft:#4C68D6; --ink-faint:#8E9BD4;
-    --rule:#E3E6F7; --accent:#7B5BF2; --accent-soft:#F3EEFE; --signal:#EC5FA8;
-    --grad: linear-gradient(96deg,#2B5CE0 0%,#7B5BF2 46%,#EC5FA8 100%);
-  }
-  body {
-    margin:0; background:var(--ground); color:var(--ink);
-    font-family:"Poppins","Helvetica Neue",Arial,sans-serif;
-    line-height:1.6; padding:0 20px 80px;
-    display:flex; min-height:100%; justify-content:center;
-    -webkit-font-smoothing:antialiased;
-  }
-  .wrap { max-width:36rem; width:100%; padding-block:64px; }
-  .mark {
-    width:76px; height:76px; border-radius:50%; background:var(--grad);
-    padding:2px; display:grid; place-items:center; margin-bottom:30px;
-  }
-  .mark span {
-    width:100%; height:100%; border-radius:50%; background:var(--ground);
-    display:grid; place-items:center; font-size:1.45rem; font-weight:500; color:var(--accent);
-  }
-  h1 {
-    font-size:clamp(2rem,7vw,2.9rem); font-weight:700; letter-spacing:-.025em;
-    line-height:1.12; margin:0 0 18px; text-wrap:balance;
-    background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
-  .facts { font-weight:600; font-size:clamp(1rem,3.4vw,1.15rem); margin:0 0 26px; }
-  p { margin:0 0 18px; color:var(--ink-soft); }
-  .eyebrow {
-    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace; font-size:.72rem;
-    letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 14px;
-  }
-  .card {
-    background:var(--accent-soft); border-radius:10px; padding:24px;
-    margin:30px 0 24px; display:grid; gap:10px;
-  }
-  .card .num {
-    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-    font-size:clamp(1.15rem,4.8vw,1.5rem); font-weight:500; color:#6D3FD6;
-  }
-  .card .num a { color:inherit; text-decoration:none; }
-  .card .num a:hover, .card .num a:focus-visible { text-decoration:underline; }
-  .card p { margin:0; font-size:.96rem; }
-  a { color:#6D3FD6; text-underline-offset:3px; }
-  a:focus-visible { outline:2px solid var(--signal); outline-offset:3px; border-radius:2px; }
-  .small { font-size:.88rem; color:var(--ink-faint); border-top:1px solid var(--rule); padding-top:20px; margin-top:34px; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  padding: 0 20px 96px;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 42rem; margin: 0 auto; }
+section { padding-block: 56px; border-top: 1px solid var(--rule); }
+section:first-of-type { border-top: 0; }
+
+h1, h2, h3 { font-family: var(--display); font-weight: var(--display-weight); text-wrap: balance; line-height: 1.14; margin: 0; }
+h1 { font-size: clamp(2.05rem, 6.8vw, 3rem); letter-spacing: var(--h1-tracking); }
+h2 { font-size: clamp(1.4rem, 4.4vw, 1.8rem); letter-spacing: -0.012em; margin-bottom: 24px; }
+h3 { font-size: 1.05rem; font-weight: 500; margin-bottom: 6px; }
+p { margin: 0 0 20px; }
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; }
+
+.eyebrow {
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-faint); margin: 0 0 14px;
+}
+.small { font-size: .92rem; color: var(--ink-soft); }
+
+/* the mark */
+.mark {
+  width: 74px; height: 74px; border-radius: 50%;
+  display: grid; place-items: center; margin-bottom: 26px;
+  border: 2px solid var(--accent);
+}
+.mark span { font-family: var(--display); font-size: 1.45rem; color: var(--accent); line-height: 1; }
+
+/* hero */
+.hero { padding-block: 44px 40px; }
+.hero .facts {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(1.05rem, 3.4vw, 1.25rem);
+  margin: 20px 0 14px; line-height: 1.35; color: var(--ink);
+}
+.hero .thesis { font-size: 1.15rem; color: var(--ink-soft); max-width: 34rem; }
+
+/* the line */
+.line-card {
+  background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 22px 24px; margin: 28px 0 0;
+  display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: baseline;
+}
+.line-card .num {
+  font-family: var(--mono); font-size: clamp(1.1rem, 4.4vw, 1.45rem);
+  font-weight: 500; color: var(--accent); white-space: nowrap;
+}
+.line-card .what { font-size: .96rem; color: var(--ink-soft); flex: 1 1 15rem; }
+.line-card a { color: inherit; }
+
+a { color: var(--link); text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 2px; }
+
+/* week rhythm */
+.beat {
+  display: grid; grid-template-columns: 10.5rem 1fr; gap: 4px 22px;
+  padding-block: 16px; border-bottom: 1px solid var(--rule);
+}
+.beat:last-child { border-bottom: 0; }
+.beat .when {
+  font-family: var(--mono); font-size: .76rem; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--accent); padding-top: .32em;
+}
+.beat p { margin: 0; font-size: .98rem; color: var(--ink-soft); }
+.beat .what-title { font-family: var(--display); font-weight: 500; font-size: 1.02rem; color: var(--ink); margin-bottom: 3px; }
+@media (max-width: 560px) { .beat { grid-template-columns: 1fr; } .beat .when { padding-top: 0; } }
+
+/* lists */
+ul.plain { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 14px; }
+ul.plain li { padding-left: 1.15rem; position: relative; color: var(--ink-soft); }
+ul.plain li::before {
+  content: ""; position: absolute; left: 0; top: .72em;
+  width: .42rem; height: .42rem; background: var(--accent); border-radius: 50%;
+}
+ul.plain li strong { color: var(--ink); }
+
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+@media (max-width: 620px) { .split { grid-template-columns: 1fr; gap: 28px; } }
+.split h2 { margin-bottom: 14px; }
+.split p { font-size: .98rem; color: var(--ink-soft); }
+
+/* sessions */
+.dates { display: flex; flex-wrap: wrap; gap: 14px; margin: 22px 0 18px; }
+.date {
+  background: var(--accent-soft); border-radius: var(--radius);
+  padding: 14px 18px; display: grid; gap: 2px; flex: 1 1 13rem;
+}
+.date .d { font-family: var(--display); font-weight: 500; font-size: 1rem; color: var(--ink); }
+.date .t { font-family: var(--mono); font-size: .8rem; color: var(--accent-ink); letter-spacing: .04em; }
+
+/* money */
+.price { font-family: var(--display); font-weight: var(--display-weight); font-size: clamp(1.65rem, 5.6vw, 2.2rem); letter-spacing: -.02em; margin-bottom: 4px; }
+.price-note { font-family: var(--mono); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 22px; }
+.terms { display: grid; gap: 18px; margin-top: 8px; }
+.term { border-left: 3px solid var(--rule); padding-left: 16px; }
+.term.floor { border-left-color: var(--signal); }
+.term p { font-size: .96rem; color: var(--ink-soft); margin: 0; }
+
+/* steps */
+ol.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; gap: 20px; }
+ol.steps li { counter-increment: s; display: grid; grid-template-columns: 1.9rem 1fr; gap: 14px; }
+ol.steps li::before {
+  content: counter(s); font-family: var(--mono); font-size: .82rem;
+  color: var(--accent); border: 1px solid var(--accent); border-radius: 50%;
+  width: 1.9rem; height: 1.9rem; display: grid; place-items: center; background: var(--panel);
+}
+ol.steps p { margin: 0; font-size: .98rem; color: var(--ink-soft); }
+ol.steps strong { color: var(--ink); }
+
+/* faq */
+details { border-bottom: 1px solid var(--rule); }
+details summary {
+  cursor: pointer; list-style: none; padding: 15px 0;
+  font-family: var(--display); font-weight: 500; font-size: 1rem;
+  display: flex; justify-content: space-between; gap: 16px; align-items: baseline;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::after { content: "+"; font-family: var(--mono); color: var(--accent); }
+details[open] summary::after { content: "\2212"; }
+details p { padding-bottom: 16px; margin: 0; color: var(--ink-soft); font-size: .98rem; }
+
+.rules p { color: var(--ink-soft); }
+blockquote { margin: 0; padding: 0 0 0 18px; border-left: 3px solid var(--accent); font-size: 1.08rem; }
+.close p { font-size: 1.06rem; }
+.signoff { font-family: var(--mono); font-size: .82rem; color: var(--ink-faint); letter-spacing: .04em; margin-top: 28px; }
+.signoff a { color: var(--ink-soft); }
+.crisis { font-size: .9rem; color: var(--ink-faint); }
+
+@media (prefers-reduced-motion: no-preference) {
+  details[open] p { animation: fade .18s ease-out; }
+  @keyframes fade { from { opacity: 0; transform: translateY(-2px); } }
+}
+
+/* read time */
+.readtime {
+  font-family: var(--mono); font-size: .76rem; letter-spacing: .06em;
+  color: var(--ink-faint); margin-top: 18px;
+}
+
+/* the four roles */
+ul.roles {
+  list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 2px;
+}
+ul.roles li {
+  display: grid; grid-template-columns: 7.5rem 1fr; gap: 6px 20px;
+  padding-block: 14px; border-bottom: 1px solid var(--rule); align-items: baseline;
+}
+ul.roles li:first-child { border-top: 1px solid var(--rule); }
+ul.roles .role {
+  font-family: var(--mono); font-size: .78rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent);
+}
+ul.roles .want { color: var(--ink-soft); }
+@media (max-width: 560px) { ul.roles li { grid-template-columns: 1fr; } }
+
+/* the good list */
+ul.roles.good .role { color: var(--signal); }
+ul.roles.good li:first-child { border-top: 1px solid var(--rule); }
+
+/* qualities */
+ul.qualities {
+  list-style: none; margin: 4px 0 26px; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+ul.qualities li {
+  font-family: var(--mono); font-size: .78rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--accent-ink);
+  background: var(--accent-soft); border-radius: 999px; padding: 7px 14px;
+}
+
+
+/* Banner: the LinkedIn banner brought to the page. White ground, blue text,
+   blue-violet-pink gradient on the display type, the circle "the" mark. */
+:root {
+  --ground: #FFFFFF;
+  --panel: #FBFAFF;
+  --ink: #2B4FD0;
+  --ink-soft: #4C68D6;
+  --ink-faint: #8E9BD4;
+  --rule: #E3E6F7;
+  --accent: #8B5CF6;
+  --accent-ink: #6D3FD6;
+  --accent-soft: #F3EEFE;
+  --signal: #EC5FA8;
+  --link: #6D3FD6;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(43,79,208,.06), 0 10px 30px rgba(43,79,208,.08);
+
+  --display: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --display-weight: 600;
+  --h1-tracking: -0.025em;
+  --body: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --grad: linear-gradient(96deg, #2B5CE0 0%, #7B5BF2 46%, #EC5FA8 100%);
+}
+
+body { font-size: 1.02rem; line-height: 1.66; }
+
+/* gradient display type, the banner's signature */
+h1, h2, .price, .hero .facts {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+h1 { font-weight: 700; }
+.hero .facts { font-weight: 600; }
+.hero .thesis { color: var(--ink-soft); }
+
+/* the mark: gradient ring, drawn as a gradient disc with a white inner disc */
+.mark { border: 0; background: var(--grad); padding: 2px; }
+.mark span {
+  width: 100%; height: 100%; border-radius: 50%; background: var(--ground);
+  display: grid; place-items: center; font-weight: 500; font-size: 1.4rem;
+  color: #7B5BF2;
+}
+
+.line-card { border-color: #DCD3FB; }
+.line-card .num { color: var(--accent-ink); }
+.beat .when { color: var(--accent); }
+.date { background: var(--accent-soft); }
+.date .d { color: var(--ink); }
+ul.plain li::before { background: var(--signal); }
+blockquote { border-left-color: var(--signal); font-weight: 500; }
+.term.floor { border-left-color: var(--signal); }
+ol.steps li::before { border-color: #DCD3FB; color: var(--accent-ink); }
+details summary { color: var(--ink); }
+details summary::after { color: var(--signal); }
+.eyebrow { color: var(--accent); }
+
 </style>
+
 </head>
 <body>
-  <div class="wrap">
+<div class="wrap">
+
+  <section class="hero">
     <div class="mark" aria-hidden="true"><span>the</span></div>
-    <p class="eyebrow">Work in progress</p>
     <h1>the housewholed experiment</h1>
     <p class="facts">200 households. One year. Starting October&nbsp;1, 2026.</p>
-    <p>It's not a knowledge problem. It's a practice problem. Hard things are easier in community.</p>
-    <p>I'm still writing the rest of this page. It'll be here shortly, with everything: what a week looks like, what it costs, who it's for, and who it isn't for.</p>
-    <div class="card">
+    <p class="thesis">It's not a knowledge problem. It's a feelings and practice problem. Feel the feels, and practice hard things in community.</p>
+    <p class="readtime">About a six minute read</p>
+    <div class="line-card">
       <span class="num"><a href="tel:+12155982888">+1 (215) 598-2888</a></span>
-      <p>The line is already open. Call and say what you want for your household a year from now, and what's getting in the way. That message is the application, and nobody pays anything before I've listened.</p>
+      <span class="what">Call and tell me three things: what you want for your household, what's getting in the way, and what's going great. That message is your application, and nobody pays anything before I've listened.<br><br>Rather not call? Send a voice note to <a href="mailto:matthew@housewholed.org">matthew@housewholed.org</a>.</span>
     </div>
-    <p>If a voice memo is easier, send one to <a href="mailto:matthew@housewholed.org">matthew@housewholed.org</a>.</p>
-    <p>And if you think this is a terrible idea, call the same number and tell me why. Sixty seconds. Those calls are more useful to me right now than the ones that say it sounds nice.</p>
-    <p class="small">Matthew A. Grande · <a href="mailto:matthew@housewholed.org">matthew@housewholed.org</a></p>
-  </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">The question</p>
+    <h2>What do I want for my household?</h2>
+    <p>Four things.</p>
+    <ul class="roles">
+      <li><span class="role">Person</span><span class="want">Take care of myself. Physically, mentally, emotionally, socially.</span></li>
+      <li><span class="role">Partner</span><span class="want">Be a loving and supportive partner to my wife.</span></li>
+      <li><span class="role">Parent</span><span class="want">Be a present and nurturing dad to our daughter.</span></li>
+      <li><span class="role">Provider</span><span class="want">Provide for my family, without compromising the first three.</span></li>
+    </ul>
+    <p>I believe a lot of other people want these too. Here's my rub:</p>
+    <ul class="plain">
+      <li>I sometimes eat garbage and don't take care of my body.</li>
+      <li>I sometimes feel disconnected from my wife, and scared to have the hard conversations.</li>
+      <li>I don't give my daughter my full attention, and I get frustrated with her.</li>
+      <li>I don't take bold, courageous action to provide for my family.</li>
+    </ul>
+    <p>It isn't for lack of wanting. It's inaction instead of action. Consuming instead of producing. Hiding instead of putting myself out there. Underneath all of it: <strong>fear of rejection, fear of getting it right, fear of unworthiness.</strong> Which are all kind of the same fear.</p>
+    <p>And here's the thing. <strong>The voice in my head tells me that list far more often than it tells me this one:</strong></p>
+    <ul class="roles good">
+      <li><span class="role">Person</span><span class="want">My rageful temper no longer consumes me or gets aimed at people in my household. My fear and helplessness get expressed in the moment, instead of carried for a year.</span></li>
+      <li><span class="role">Partner</span><span class="want">We found the house of our dreams, survived a four-year fertility struggle, and are raising a daughter who carries both our distinct gifts.</span></li>
+      <li><span class="role">Parent</span><span class="want">Yesterday was a Monday off school. We made slime, ate breakfast outside, walked through town, went to the library, got water ice. I'm the dad I said I'd be more often than not.</span></li>
+      <li><span class="role">Provider</span><span class="want">I've worked for billion-dollar global financial institutions, in underserved inner-city communities, built new models for social impact, and coached people who affect the world and are trying to be more themselves while doing it.</span></li>
+    </ul>
+    <p><strong>Both lists are true on the same day.</strong> Getting good at holding both, out loud, with other people, is most of the work.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">The one idea</p>
+    <h2>It's not a knowledge problem</h2>
+    <p>We have every bit of knowledge that ever existed at our fingertips. It isn't that we don't know what to do. It's that an uncomfortable feeling gets there first. An uncertain one. And we want to feel those feelings and still act, empowered and imperfectly, right inside them.</p>
+    <p>So much of what's sold to us points outward: the answer is over there, and here's the clear pathway to the thing that will make you whole. This is the opposite. Feel the thing. Say it out loud. Run an experiment. Report back.</p>
+    <p><strong>Yes, this is another screen.</strong> I don't want to do this on social media, and I believe real connection can happen virtually, in the right container, with the right agreements. The difference: <strong>not a screen you use to avoid a feeling, but one you come to in order to welcome it.</strong></p>
+    <p>My hope is that what we practice here shows up in how we are at home, and in the physical communities we're already part of.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">The rhythm</p>
+    <h2>A week in the life</h2>
+    <div class="rhythm">
+      <div class="beat">
+        <span class="when">You wake up</span>
+        <div>
+          <div class="what-title">Excited, or funky, and you say it out loud</div>
+          <p>Celebrate it or just name it on the Line, or post it to the community if today needs support.</p>
+        </div>
+      </div>
+      <div class="beat">
+        <span class="when">Monday morning</span>
+        <div>
+          <div class="what-title">The pep talk</div>
+          <p>Some hope, some encouragement, and an experiment for the week.</p>
+        </div>
+      </div>
+      <div class="beat">
+        <span class="when">When you need to be heard</span>
+        <div>
+          <div class="what-title">A listening partnership</div>
+          <p>Fifteen or thirty minutes each. One shares, one listens. No fixing, no advising. You both leave lighter.</p>
+        </div>
+      </div>
+      <div class="beat">
+        <span class="when">When the work is hard</span>
+        <div>
+          <div class="what-title">Coworking</div>
+          <p>Say what you're working on, dig in for an hour with company, report back at the end.</p>
+        </div>
+      </div>
+      <div class="beat">
+        <span class="when">When it's pressing</span>
+        <div>
+          <div class="what-title">A workshop on the thing</div>
+          <p>A member or a practitioner walks a group through real exercises, so you leave with a better relationship to it.</p>
+        </div>
+      </div>
+      <div class="beat">
+        <span class="when">When you need an answer</span>
+        <div>
+          <div class="what-title">The Commons</div>
+          <p>One good resource, not a thousand. If it isn't there, ask, and what comes back becomes part of it.</p>
+        </div>
+      </div>
+      <div class="beat">
+        <span class="when">End of the week</span>
+        <div>
+          <div class="what-title">The celebration post</div>
+          <p>What went well, what you're proud of, and what still needs attention.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">The spaces</p>
+    <h2>What's here for you</h2>
+    <ul class="plain">
+      <li><strong>The Housewholed Line.</strong> Say it out loud, any hour. Somebody is listening.</li>
+      <li><strong>The weekly pep talk.</strong> Encouragement, and an experiment for the week.</li>
+      <li><strong>Listening partnerships.</strong> Fifteen or thirty minutes each, no fixing.</li>
+      <li><strong>Coworking and labs.</strong> Company while you work, and a room to share what you tried and what happened.</li>
+      <li><strong>Targeted workshops.</strong> The under-earning partner. Parenting. Sick and dying parents. Fertility and other pathways to family. Health and fitness. Medical mysteries. Inherited patterns.</li>
+      <li><strong>Expression sessions.</strong> Practice feeling joyful, excited, sad, afraid, angry, in community and in lots of different ways: sharing, moving, writing, drawing, dancing, singing, shouting. <em>What emotion do you need help practicing?</em></li>
+      <li><strong>The Commons.</strong> What we'd want our younger selves, or our kids, to know.</li>
+    </ul>
+  </section>
+
+  <section class="split">
+    <div>
+      <h2>Who this is for</h2>
+      <p>A household is whoever you share a home and a life with. One person, a couple, roommates, a family of any shape.</p>
+      <p>Households where at least one of the four is straining: <strong>person, partner, parent, provider.</strong></p>
+      <p>Especially <strong>family businesses, solopreneurs and the self-employed,</strong> where work and home share a roof and a bank account.</p>
+      <p>People willing to own their part. We're all a victim of something, and the work is the boundaries and actions that empower us inside it.</p>
+    </div>
+    <div>
+      <h2>Who this is not for</h2>
+      <p>If you want a curriculum, or the five steps, I'd rather you kept your money.</p>
+      <p class="crisis">If you're in crisis right now, you need more than a community. Please get real support first and come find us after. In the US, call or text 988.</p>
+      <p>And if talking honestly about your household makes you want to close this page, that's worth listening to. This asks something of you.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Why me</p>
+    <h2>At 50, I've lived multiple lives</h2>
+    <ul class="plain">
+      <li>A single, work-obsessed, status-seeking corporate one.</li>
+      <li>A single, lost, unvalued, jobless one.</li>
+      <li>And an emotionally fluid, family-focused, community-supported one.</li>
+    </ul>
+    <p>My clients have worked for Google, Goldman Sachs and the White House, and advised the Vatican and European parliaments. What we talked about was never the state of the business. It was what they wanted and what was in the way. Many of their parents know my name, because of how things changed at home.</p>
+    <p>And I've convened people my whole life: pick-up games, a two-hundred-person happy hour in South Philly, a coworking crew, a kindergarten family meetup, a tech meetup, porch coffee for my neighbors.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">What I'm after</p>
+    <h2>The household of origin you'd design for yourself</h2>
+    <blockquote><p>I want to prove there's a way to face life together, in community, aligned to the life we want, without sacrificing ourselves or carrying burdens we were given and no longer want to hold.</p></blockquote>
+    <ul class="qualities">
+      <li>alive</li><li>emotive</li><li>exciting</li><li>creative</li>
+      <li>loving</li><li>understanding</li><li>curious</li><li>empowering</li>
+    </ul>
+    <p>For our current selves and communities, and for our future ones.</p>
+  </section>
+
+  <section class="rules">
+    <p class="eyebrow">The rules of the room</p>
+    <h2>How we are with each other</h2>
+    <ul class="plain">
+      <li><strong>No advice.</strong> Share what happened to you. Let people take what's useful.</li>
+      <li><strong>Bragging required.</strong> If you only bring the hard thing, we'll ask for the good one.</li>
+      <li><strong>We grow what's good.</strong> Not only what needs fixing.</li>
+      <li><strong>No gossip, blaming or shaming.</strong></li>
+      <li><strong>No ranking</strong> one household against another. A new angle, not a scoreboard.</li>
+      <li><strong>We listen intently.</strong></li>
+      <li><strong>We hold each other accountable,</strong> even when it's uncomfortable. Saying the hard thing here is practice for saying it face to face.</li>
+      <li><strong>What's shared here stays here.</strong></li>
+      <li><strong>No ads, no trolls, no performance.</strong></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>What I can and cannot promise</h2>
+    <p>I can't promise I'll get it right. Trying to get it right is most of what got me here.</p>
+    <p>I can promise caring spaces, real agreements so people feel safe, and room to be vulnerable without being tidy about it.</p>
+    <p><strong>Do 10 to 20 percent of this year and you'll find meaningful progress in your household.</strong></p>
+  </section>
+
+  <section class="sessions">
+    <p class="eyebrow">Come and ask me anything</p>
+    <h2>Open house sessions, starting this week</h2>
+    <p>Sixty minutes on Zoom: what this is, your questions, and space for anyone who wants to say a want out loud. Curious counts. Skeptical counts. <strong>Dates and links to follow this week.</strong></p>
+    <p class="small">To be told when: email <a href="mailto:matthew@housewholed.org">matthew@housewholed.org</a> or call the line.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">How to join</p>
+    <h2>It starts with your voice, not a credit card</h2>
+    <ol class="steps">
+      <li><p><strong>Record your application.</strong> Call <a href="tel:+12155982888">+1 (215) 598-2888</a> or send a voice note to <a href="mailto:matthew@housewholed.org">matthew@housewholed.org</a>: what you want, what's in the way, what's going great. Leave your name and email.</p></li>
+      <li><p><strong>I listen to every one</strong> and reply within two days.</p></li>
+      <li><p><strong>If it's a fit, I send the link to invest.</strong> No money changes hands before that.</p></li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="eyebrow">What it costs</p>
+    <div class="price">$1,500 per household, for the year</div>
+    <div class="price-note">One payment, only after your application is accepted</div>
+    <p>No subscription, no auto-renew. October 1, 2026 to September 30, 2027. When the year ends, it ends.</p>
+    <p>Where it goes: a modest salary, taxes, the cost of running it, retiring household debt, and the reserve that means my family stops deciding out of fear.</p>
+    <div class="terms">
+      <div class="term floor">
+        <h3>The floor: 50 households by October 15</h3>
+        <p>The investment is final once made, with one exception. Fewer than 50 households by October 15 and the year doesn't run: everyone gets a full refund.</p>
+      </div>
+      <div class="term">
+        <h3>Community seats</h3>
+        <p>Up to 25 households can join by investing what they're able. If $1,500 isn't possible, say so in your application.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">The questions you're already asking</p>
+    <h2>Fair enough</h2>
+    <details><summary>I don't have an hour a week</summary><p>You do, and you already know where it is. The first experiment is to find it and hold it for yourself. What would you love to say no to, so you can say yes to this?</p></details>
+    <details><summary>My partner would never do this</summary><p>The front door is for the first person in the household brave enough to walk through it. Bring home what you learn and share the invitation. A mandate is just you trying to fix someone else, which I learned the hard way, so don't push.</p></details>
+    <details><summary>This sounds a little woo-woo</summary><p>Part of what makes hard things hard is feeling the hard feelings. We're going to do that here, together, so nobody does it alone. Most of it is experiments, reports, and people keeping each other company while they do hard things.</p></details>
+    <details><summary>What if I join and don't use it?</summary><p>That's what the application is for. If you can't picture yourself showing up, or what's possible for you by being here, maybe this isn't your place.</p></details>
+    <details><summary>What if not enough people sign up?</summary><p>This year needs at least 50 households. If fewer than 50 have joined by October 15, everyone gets a full refund, and I'll share what I learned.</p></details>
+    <details><summary>What do I actually get on day one?</summary><p>A welcome session, a virtual community and a place to introduce yourself, and a calendar of events to join.</p></details>
+  </section>
+
+  <section class="close">
+    <p class="eyebrow">A year from now</p>
+    <h2>Why don't you come along with us?</h2>
+    <p>I don't know where your household will be at the end of this, any more than I know where mine will be. But I'd bet money that if we do it together, and we're as vulnerable with our wants as we are with our struggles, we'll be happier and more peaceful a year from now, with a harmony we can share with everyone around us.</p>
+    <div class="line-card">
+      <span class="num"><a href="tel:+12155982888">+1 (215) 598-2888</a></span>
+      <span class="what">What you want, what's in the way, what's going great. <strong>Or, if you think this is wrong, call and tell me why.</strong> Sixty seconds. The people who tell me what's broken are more useful right now than the people who say it sounds nice.</span>
+    </div>
+    <p class="signoff">
+      LFTI(ILC). Let's f'ing try it in loving community.<br>
+      Matthew A. Grande · <a href="mailto:matthew@housewholed.org">matthew@housewholed.org</a>
+    </p>
+  </section>
+
+</div>
+
 </body>
 </html>
