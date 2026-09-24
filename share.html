@@ -10,15 +10,259 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}</style>
+<style>
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.62;
+  padding: 0 20px 96px;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 42rem; margin: 0 auto; }
+section { padding-block: 56px; border-top: 1px solid var(--rule); }
+section:first-of-type { border-top: 0; }
 
+h1, h2, h3 { font-family: var(--display); font-weight: var(--display-weight); text-wrap: balance; line-height: 1.14; margin: 0; }
+h1 { font-size: clamp(2.05rem, 6.8vw, 3rem); letter-spacing: var(--h1-tracking); }
+h2 { font-size: clamp(1.4rem, 4.4vw, 1.8rem); letter-spacing: -0.012em; margin-bottom: 24px; }
+h3 { font-size: 1.05rem; font-weight: 500; margin-bottom: 6px; }
+p { margin: 0 0 20px; }
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; }
+
+.eyebrow {
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink-faint); margin: 0 0 14px;
+}
+.small { font-size: .92rem; color: var(--ink-soft); }
+
+/* the mark */
+.mark {
+  width: 74px; height: 74px; border-radius: 50%;
+  display: grid; place-items: center; margin-bottom: 26px;
+  border: 2px solid var(--accent);
+}
+.mark span { font-family: var(--display); font-size: 1.45rem; color: var(--accent); line-height: 1; }
+
+/* hero */
+.hero { padding-block: 44px 40px; }
+.hero .facts {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(1.05rem, 3.4vw, 1.25rem);
+  margin: 20px 0 14px; line-height: 1.35; color: var(--ink);
+}
+.hero .thesis { font-size: 1.15rem; color: var(--ink-soft); max-width: 34rem; }
+
+/* the line */
+.line-card {
+  background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 22px 24px; margin: 28px 0 0;
+  display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: baseline;
+}
+.line-card .num {
+  font-family: var(--mono); font-size: clamp(1.1rem, 4.4vw, 1.45rem);
+  font-weight: 500; color: var(--accent); white-space: nowrap;
+}
+.line-card .what { font-size: .96rem; color: var(--ink-soft); flex: 1 1 15rem; }
+.line-card a { color: inherit; }
+
+a { color: var(--link); text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 2px; }
+
+/* week rhythm */
+.beat {
+  display: grid; grid-template-columns: 10.5rem 1fr; gap: 4px 22px;
+  padding-block: 16px; border-bottom: 1px solid var(--rule);
+}
+.beat:last-child { border-bottom: 0; }
+.beat .when {
+  font-family: var(--mono); font-size: .76rem; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--accent); padding-top: .32em;
+}
+.beat p { margin: 0; font-size: .98rem; color: var(--ink-soft); }
+.beat .what-title { font-family: var(--display); font-weight: 500; font-size: 1.02rem; color: var(--ink); margin-bottom: 3px; }
+@media (max-width: 560px) { .beat { grid-template-columns: 1fr; } .beat .when { padding-top: 0; } }
+
+/* lists */
+ul.plain { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 14px; }
+ul.plain li { padding-left: 1.15rem; position: relative; color: var(--ink-soft); }
+ul.plain li::before {
+  content: ""; position: absolute; left: 0; top: .72em;
+  width: .42rem; height: .42rem; background: var(--accent); border-radius: 50%;
+}
+ul.plain li strong { color: var(--ink); }
+
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+@media (max-width: 620px) { .split { grid-template-columns: 1fr; gap: 28px; } }
+.split h2 { margin-bottom: 14px; }
+.split p { font-size: .98rem; color: var(--ink-soft); }
+
+/* sessions */
+.dates { display: flex; flex-wrap: wrap; gap: 14px; margin: 22px 0 18px; }
+.date {
+  background: var(--accent-soft); border-radius: var(--radius);
+  padding: 14px 18px; display: grid; gap: 2px; flex: 1 1 13rem;
+}
+.date .d { font-family: var(--display); font-weight: 500; font-size: 1rem; color: var(--ink); }
+.date .t { font-family: var(--mono); font-size: .8rem; color: var(--accent-ink); letter-spacing: .04em; }
+
+/* money */
+.price { font-family: var(--display); font-weight: var(--display-weight); font-size: clamp(1.65rem, 5.6vw, 2.2rem); letter-spacing: -.02em; margin-bottom: 4px; }
+.price-note { font-family: var(--mono); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 22px; }
+.terms { display: grid; gap: 18px; margin-top: 8px; }
+.term { border-left: 3px solid var(--rule); padding-left: 16px; }
+.term.floor { border-left-color: var(--signal); }
+.term p { font-size: .96rem; color: var(--ink-soft); margin: 0; }
+
+/* steps */
+ol.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; gap: 20px; }
+ol.steps li { counter-increment: s; display: grid; grid-template-columns: 1.9rem 1fr; gap: 14px; }
+ol.steps li::before {
+  content: counter(s); font-family: var(--mono); font-size: .82rem;
+  color: var(--accent); border: 1px solid var(--accent); border-radius: 50%;
+  width: 1.9rem; height: 1.9rem; display: grid; place-items: center; background: var(--panel);
+}
+ol.steps p { margin: 0; font-size: .98rem; color: var(--ink-soft); }
+ol.steps strong { color: var(--ink); }
+
+/* faq */
+details { border-bottom: 1px solid var(--rule); }
+details summary {
+  cursor: pointer; list-style: none; padding: 15px 0;
+  font-family: var(--display); font-weight: 500; font-size: 1rem;
+  display: flex; justify-content: space-between; gap: 16px; align-items: baseline;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::after { content: "+"; font-family: var(--mono); color: var(--accent); }
+details[open] summary::after { content: "\2212"; }
+details p { padding-bottom: 16px; margin: 0; color: var(--ink-soft); font-size: .98rem; }
+
+.rules p { color: var(--ink-soft); }
+blockquote { margin: 0; padding: 0 0 0 18px; border-left: 3px solid var(--accent); font-size: 1.08rem; }
+.close p { font-size: 1.06rem; }
+.signoff { font-family: var(--mono); font-size: .82rem; color: var(--ink-faint); letter-spacing: .04em; margin-top: 28px; }
+.signoff a { color: var(--ink-soft); }
+.crisis { font-size: .9rem; color: var(--ink-faint); }
+
+@media (prefers-reduced-motion: no-preference) {
+  details[open] p { animation: fade .18s ease-out; }
+  @keyframes fade { from { opacity: 0; transform: translateY(-2px); } }
+}
+
+/* read time */
+.readtime {
+  font-family: var(--mono); font-size: .76rem; letter-spacing: .06em;
+  color: var(--ink-faint); margin-top: 18px;
+}
+
+/* the four roles */
+ul.roles {
+  list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 2px;
+}
+ul.roles li {
+  display: grid; grid-template-columns: 7.5rem 1fr; gap: 6px 20px;
+  padding-block: 14px; border-bottom: 1px solid var(--rule); align-items: baseline;
+}
+ul.roles li:first-child { border-top: 1px solid var(--rule); }
+ul.roles .role {
+  font-family: var(--mono); font-size: .78rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent);
+}
+ul.roles .want { color: var(--ink-soft); }
+@media (max-width: 560px) { ul.roles li { grid-template-columns: 1fr; } }
+
+/* the good list */
+ul.roles.good .role { color: var(--signal); }
+ul.roles.good li:first-child { border-top: 1px solid var(--rule); }
+
+/* qualities */
+ul.qualities {
+  list-style: none; margin: 4px 0 26px; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+ul.qualities li {
+  font-family: var(--mono); font-size: .78rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--accent-ink);
+  background: var(--accent-soft); border-radius: 999px; padding: 7px 14px;
+}
+
+
+/* Banner: the LinkedIn banner brought to the page. White ground, blue text,
+   blue-violet-pink gradient on the display type, the circle "the" mark. */
+:root {
+  --ground: #FFFFFF;
+  --panel: #FBFAFF;
+  --ink: #2B4FD0;
+  --ink-soft: #4C68D6;
+  --ink-faint: #8E9BD4;
+  --rule: #E3E6F7;
+  --accent: #8B5CF6;
+  --accent-ink: #6D3FD6;
+  --accent-soft: #F3EEFE;
+  --signal: #EC5FA8;
+  --link: #6D3FD6;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(43,79,208,.06), 0 10px 30px rgba(43,79,208,.08);
+
+  --display: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --display-weight: 600;
+  --h1-tracking: -0.025em;
+  --body: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --grad: linear-gradient(96deg, #2B5CE0 0%, #7B5BF2 46%, #EC5FA8 100%);
+}
+
+body { font-size: 1.02rem; line-height: 1.66; }
+
+/* gradient display type, the banner's signature */
+h1, h2, .price, .hero .facts {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+h1 { font-weight: 700; }
+.hero .facts { font-weight: 600; }
+.hero .thesis { color: var(--ink-soft); }
+
+/* the mark: gradient ring, drawn as a gradient disc with a white inner disc */
+.mark { border: 0; background: var(--grad); padding: 2px; }
+.mark span {
+  width: 100%; height: 100%; border-radius: 50%; background: var(--ground);
+  display: grid; place-items: center; font-weight: 500; font-size: 1.4rem;
+  color: #7B5BF2;
+}
+
+.line-card { border-color: #DCD3FB; }
+.line-card .num { color: var(--accent-ink); }
+.beat .when { color: var(--accent); }
+.date { background: var(--accent-soft); }
+.date .d { color: var(--ink); }
+ul.plain li::before { background: var(--signal); }
+blockquote { border-left-color: var(--signal); font-weight: 500; }
+.term.floor { border-left-color: var(--signal); }
+ol.steps li::before { border-color: #DCD3FB; color: var(--accent-ink); }
+details summary { color: var(--ink); }
+details summary::after { color: var(--signal); }
+.eyebrow { color: var(--accent); }
+
+</style>
 <style>
 blockquote {
-  background: var(--panel); border-left: 3px solid var(--signal);
-  border-radius: var(--radius); box-shadow: var(--shadow);
-  padding: 22px 24px; margin: 0 0 20px; font-size: 1rem;
+  background: var(--panel);
+  border-left: 3px solid var(--signal);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px 26px;
+  margin: 0 0 22px;
+  font-size: 1rem;
 }
 blockquote p { margin: 0 0 14px; color: var(--ink-soft); }
 blockquote p:last-child { margin-bottom: 0; }
+.small { margin-bottom: 10px; }
 </style>
 </head>
 <body>
