@@ -263,6 +263,24 @@ blockquote {
 blockquote p { margin: 0 0 14px; color: var(--ink-soft); }
 blockquote p:last-child { margin-bottom: 0; }
 .small { margin-bottom: 10px; }
+
+.copyblock { position: relative; margin: 0 0 22px; }
+.copyblock blockquote { margin: 0; padding-right: 96px; }
+.copybtn {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .08em;
+  text-transform: uppercase; cursor: pointer;
+  color: var(--accent-ink); background: var(--ground);
+  border: 1px solid var(--rule); border-radius: 999px;
+  padding: 7px 14px; transition: background .15s, color .15s;
+}
+.copybtn:hover { background: var(--accent-soft); }
+.copybtn:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+.copybtn.done { background: var(--accent-soft); color: var(--accent-ink); }
+@media (max-width: 520px) {
+  .copyblock blockquote { padding-right: 24px; padding-top: 56px; }
+  .copybtn { top: 12px; right: 12px; }
+}
 </style>
 </head>
 <body>
@@ -280,33 +298,33 @@ blockquote p:last-child { margin-bottom: 0; }
     <p class="eyebrow">Option one</p>
     <h2>Forward it to one person</h2>
     <p class="small">Subject: this made me think of you</p>
-    <blockquote>
+    <div class="copyblock"><button class="copybtn" type="button">Copy</button><blockquote>
       <p>I've been watching my friend Matthew Grande build something, and it made me think of you.</p>
       <p>It's called the housewholed experiment. 200 households, one year, starting October 1. Not a course and not coaching...a community of practice for households who want to say what they want out loud, name what's in the way, and have people alongside them while they do something about it.</p>
       <p>His line is that it isn't a knowledge problem, it's a feelings and practice problem. That rang true for me.</p>
       <p>Here it is: housewholed.org</p>
       <p>There's also a phone line. You call it and say what you want for your household, what's getting in the way, and what's going great. That message is the application, and nobody pays anything before he's listened: +1 (215) 598-2888</p>
-    </blockquote>
+    </blockquote></div>
   </section>
 
   <section>
     <p class="eyebrow">Option two</p>
     <h2>Post it to your own network</h2>
-    <blockquote>
+    <div class="copyblock"><button class="copybtn" type="button">Copy</button><blockquote>
       <p>A friend of mine is building something I think a lot of us need.</p>
       <p>The housewholed experiment: 200 households, one year, starting October 1. A community of practice for households who want to name what they want, say what's hard, and get support actually doing something about it.</p>
       <p>It isn't a knowledge problem. We all know what to do. What's missing is company while we do it.</p>
       <p>housewholed.org</p>
       <p>And if you'd rather talk than read, the line is open: +1 (215) 598-2888</p>
-    </blockquote>
+    </blockquote></div>
   </section>
 
   <section>
     <p class="eyebrow">Option three</p>
     <h2>One line for a group chat</h2>
-    <blockquote>
+    <div class="copyblock"><button class="copybtn" type="button">Copy</button><blockquote>
       <p>My friend Matthew is starting a year-long community for households, beginning October 1. It's the opposite of another course...it's people practicing hard things together. housewholed.org</p>
-    </blockquote>
+    </blockquote></div>
   </section>
 
   <section>
@@ -329,5 +347,41 @@ blockquote p:last-child { margin-bottom: 0; }
   </section>
 
 </div>
+
+<script>
+(function () {
+  function textOf(block) {
+    // one blank line between paragraphs, so pasted text keeps its shape
+    return Array.from(block.querySelectorAll('p'))
+      .map(function (p) { return p.innerText.trim(); })
+      .filter(Boolean)
+      .join('\n\n');
+  }
+  document.querySelectorAll('.copybtn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = textOf(btn.parentElement.querySelector('blockquote'));
+      function done() {
+        btn.textContent = 'Copied';
+        btn.classList.add('done');
+        setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1800);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'absolute';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) { btn.textContent = 'Select and copy'; }
+        document.body.removeChild(ta);
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>
