@@ -198,6 +198,14 @@ ul.qualities li {
   background: var(--accent-soft); border-radius: 999px; padding: 7px 14px;
 }
 
+/* Calendar embed */
+.calwrap {
+  margin: 22px 0 14px; border: 1px solid var(--rule); border-radius: var(--radius);
+  overflow: hidden; background: #fff; box-shadow: var(--shadow);
+}
+.calwrap iframe { display: block; width: 100%; height: 600px; border: 0; }
+@media (max-width: 700px) { .calwrap iframe { height: 480px; } }
+
 
 /* Banner: the LinkedIn banner brought to the page. White ground, blue text,
    blue-violet-pink gradient on the display type, the circle "the" mark. */
@@ -310,6 +318,18 @@ details summary::after { color: var(--signal); }
       <div class="date"><span class="d"><a href="https://luma.com/alw8vubx">Sign up for 14 October</a></span><span class="t">$30 for the day &middot; in person, Philadelphia only</span></div>
     </div>
     <p class="small">This one is local. If you're not in Philadelphia, the listening sessions above are on Zoom and open to anyone, anywhere.</p>
+  </section>
+
+
+  <section class="sessions">
+    <p class="eyebrow">What's coming up</p>
+    <h2>The calendar</h2>
+    <p>Everything in one place: the coworking days, the small group chats, and the sessions as they get scheduled.</p>
+    <div class="calwrap">
+      <iframe id="hw-cal" title="the housewholed experiment calendar" data-src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;ctz=America%2FNew_York&amp;showPrint=0&amp;title=the%20housewholed%20experiment&amp;src=Y19lOTc5OGU2YmIxNDYzZDk3MzQ3MDQ0OTFhMjk3OGFmY2YyMDAxYTZhNWQ1MTYzMjk4OTVkMjMwMTA1NDNjMjE5QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237cb342" loading="lazy" scrolling="no"></iframe>
+      <noscript><iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;ctz=America%2FNew_York&amp;showPrint=0&amp;title=the%20housewholed%20experiment&amp;src=Y19lOTc5OGU2YmIxNDYzZDk3MzQ3MDQ0OTFhMjk3OGFmY2YyMDAxYTZhNWQ1MTYzMjk4OTVkMjMwMTA1NDNjMjE5QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237cb342" title="the housewholed experiment calendar" scrolling="no"></iframe></noscript>
+    </div>
+    <p class="small">Times are Eastern. New things get announced in the emails first, so if you want a heads up, <a href="mailto:matthew@housewholed.org?subject=Add%20me&amp;body=Add%20me%20to%20the%20emails.">add yourself</a>.</p>
   </section>
 
   <section>
@@ -550,6 +570,16 @@ details summary::after { color: var(--signal); }
       Matthew A. Grande · <a href="mailto:matthew@housewholed.org">matthew@housewholed.org</a>
     </p>
   </section>
+
+  <script>
+  (function () {
+    var f = document.getElementById('hw-cal');
+    if (!f) return;
+    var src = f.getAttribute('data-src');
+    if (window.matchMedia('(max-width: 700px)').matches) src += '&mode=AGENDA';
+    f.src = src;
+  })();
+  </script>
 
 </div>
 
